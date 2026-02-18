@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Task | ScholarSync</title>
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+  <div class="page">
+    <header class="site-header card">
+      <div>
+        <h1>ScholarSync</h1>
+        <p>Add and organize your study tasks</p>
+      </div>
+      <nav class="main-nav">
+        <a class="nav-link" href="../index.html">Home</a>
+        <a class="nav-link active" href="add-task.html">Add Task</a>
+        <a class="nav-link" href="tasks.html">Tasks Board</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2>Create New Task</h2>
+        <form id="taskForm" class="form-grid">
+          <label>
+            Task ID
+            <input id="taskId" name="id" placeholder="math-revision-01" required>
+          </label>
+          <label>
+            Title
+            <input id="taskTitle" name="title" placeholder="Revise calculus chapter 2" required>
+          </label>
+          <label>
+            Subject
+            <input id="taskSubject" name="subject" placeholder="Mathematics" required>
+          </label>
+          <label>
+            Priority (1-5)
+            <input id="taskPriority" name="priority" type="number" min="1" max="5" required>
+          </label>
+          <label>
+            Deadline
+            <input id="taskDeadline" name="deadline" type="date" required>
+          </label>
+          <button type="submit">Add Task</button>
+        </form>
+        <p id="statusText" class="status"></p>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="../js/pages/add-task.page.js"></script>
+</body>
+</html>

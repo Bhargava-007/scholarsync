@@ -1,17 +1,50 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ScholarSync</title>
-  <link rel="stylesheet" href="./css/tokens.css" />
-  <link rel="stylesheet" href="./css/base.css" />
-  <link rel="stylesheet" href="./css/layout.css" />
-  <link rel="stylesheet" href="./css/components.css" />
-  <link rel="stylesheet" href="./css/pages.css" />
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
-  <div id="app"></div>
-  <script type="module" src="./js/app.js"></script>
+  <div class="page">
+    <header class="site-header card">
+      <div>
+        <h1>ScholarSync</h1>
+        <p>Study planner with clear daily flow</p>
+      </div>
+      <nav class="main-nav">
+        <a class="nav-link active" href="index.html">Home</a>
+        <a class="nav-link" href="pages/add-task.html">Add Task</a>
+        <a class="nav-link" href="pages/tasks.html">Tasks Board</a>
+      </nav>
+    </header>
+
+    <main class="home-layout">
+      <section class="card hero">
+        <h2>Plan less. Study more.</h2>
+        <p>Use focused pages for adding tasks and managing task movement across To-Do, Doing, and Done.</p>
+        <div class="hero-actions">
+          <a class="btn-link" href="pages/add-task.html">Create a Task</a>
+          <a class="btn-link ghost" href="pages/tasks.html">Open Tasks Board</a>
+        </div>
+      </section>
+
+      <section class="card feature-grid">
+        <article class="feature">
+          <h3>Simple Input</h3>
+          <p>Capture task id, subject, priority, and deadline quickly on a dedicated form page.</p>
+        </article>
+        <article class="feature">
+          <h3>Visual Progress</h3>
+          <p>Track every task in one board view with one-click status changes.</p>
+        </article>
+        <article class="feature">
+          <h3>Urgency View</h3>
+          <p>Load top urgent tasks instantly to decide what to study next.</p>
+        </article>
+      </section>
+    </main>
+  </div>
 </body>
 </html>

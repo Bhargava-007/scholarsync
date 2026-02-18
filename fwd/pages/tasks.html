@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tasks Board | ScholarSync</title>
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+  <div class="page">
+    <header class="site-header card">
+      <div>
+        <h1>ScholarSync</h1>
+        <p>Track progress and focus urgent work</p>
+      </div>
+      <nav class="main-nav">
+        <a class="nav-link" href="../index.html">Home</a>
+        <a class="nav-link" href="add-task.html">Add Task</a>
+        <a class="nav-link active" href="tasks.html">Tasks Board</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="board">
+        <article class="card column">
+          <h2>To-Do</h2>
+          <div id="todoList"></div>
+        </article>
+        <article class="card column">
+          <h2>Doing</h2>
+          <div id="doingList"></div>
+        </article>
+        <article class="card column">
+          <h2>Done</h2>
+          <div id="doneList"></div>
+        </article>
+      </section>
+
+      <section class="card top-panel">
+        <div class="top-head">
+          <h2>Top Urgent Tasks</h2>
+          <div class="top-controls">
+            <input id="topKInput" type="number" min="1" value="3">
+            <button id="loadTopBtn" type="button">Load</button>
+          </div>
+        </div>
+        <div id="topList"></div>
+      </section>
+
+      <p id="statusText" class="status"></p>
+    </main>
+  </div>
+
+  <script type="module" src="../js/pages/tasks.page.js"></script>
+</body>
+</html>
