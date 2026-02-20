@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resources | ScholarSync</title>
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body>
+  <div class="page">
+    <header class="site-header card">
+      <div>
+        <h1>ScholarSync</h1>
+        <p>Subject Resources & Materials</p>
+      </div>
+      <nav class="main-nav" id="mainNav">
+
+      </nav>
+    </header>
+
+    <main>
+      <section class="card">
+        <div
+          style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-lg);">
+          <h2>Study Materials</h2>
+          <div style="display: flex; gap: var(--space-sm);">
+            <input type="text" placeholder="Search resources..." style="max-width: 250px;">
+            <button class="btn-link">Upload</button>
+          </div>
+        </div>
+
+        <div class="resources-grid" id="resourcesGrid">
+
+          <div
+            style="grid-column: 1 / -1; text-align: center; padding: var(--space-xl); color: var(--text-light); border: 2px dashed var(--line); border-radius: var(--radius);">
+            <i style="font-size: 48px; display: block; margin-bottom: var(--space-sm); opacity: 0.5;">📂</i>
+            <p>No resources found. Upload your first material!</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="mod" class="modal" onclick="if(event.target===this) this.classList.remove('active')">
+      <div class="modal-content card">
+        <h3 id="modT">Folder</h3>
+        <div id="files" style="margin-top: var(--space-md);">
+
+        </div>
+        <button class="btn-link ghost" onclick="document.getElementById('mod').classList.remove('active')"
+          style="margin-top: var(--space-lg); width: 100%;">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openMod(name) {
+      document.getElementById('modT').innerText = name;
+      document.getElementById('mod').classList.add('active');
+    }
+  </script>
+  <script type="module" src="../js/auth-ui.js"></script>
+</body>
+
+</html>

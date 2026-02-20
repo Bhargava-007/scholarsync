@@ -1,0 +1,21 @@
+# Compiled Java classes
+*.class
+
+# Text database files (Optional: remove if you want to track task data)
+# tasks.txt
+# users.txt
+
+# Personal/Private folder
+personal/
+private/
+notes/
+*.local.txt
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Project Guides (Private)
+COMPLETE_GUIDE.md
+FILE_LOGIC_GUIDE.md
+README.md

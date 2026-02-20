@@ -1,4 +1,5 @@
-// Basic task model for the beginner project.
+package models;
+
 public class Task {
     public String id;
     public String title;

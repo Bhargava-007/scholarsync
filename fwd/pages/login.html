@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | ScholarSync</title>
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body>
+    <div class="page">
+        <header class="site-header card">
+            <div>
+                <h1>ScholarSync</h1>
+                <p>Log in to manage your studies</p>
+            </div>
+            <nav class="main-nav" id="mainNav">
+                <a class="nav-link" href="../index.html">Home</a>
+                <a class="nav-link" href="add-task.html">Add Task</a>
+                <a class="nav-link" href="tasks.html">Tasks Board</a>
+                <a class="nav-link" href="resources.html">Resources</a>
+                <a class="nav-link active" href="login.html">Login</a>
+                <a class="nav-link" href="register.html">Register</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="card auth-card" style="max-width: 400px; margin: 0 auto;">
+                <h2>Welcome Back</h2>
+                <form id="loginForm" style="display: flex; flex-direction: column; gap: var(--space-md);">
+                    <label>
+                        Username
+                        <input id="username" type="text" placeholder="admin" required>
+                    </label>
+                    <label>
+                        Password
+                        <input id="password" type="password" placeholder="••••••••" required>
+                    </label>
+                    <button type="submit" style="width: 100%; margin-top: var(--space-sm);">Log In</button>
+                </form>
+                <p id="statusText" class="status"></p>
+
+                <div
+                    style="margin-top: var(--space-lg); text-align: center; border-top: 1px solid var(--line); padding-top: var(--space-md);">
+                    <p style="font-size: 0.875rem;">Default: admin / password123</p>
+                    <a href="../index.html" style="font-size: 0.875rem;">← Back to Home</a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script type="module" src="../js/auth-ui.js"></script>
+    <script type="module" src="../js/login.js"></script>
+</body>
+
+</html>
