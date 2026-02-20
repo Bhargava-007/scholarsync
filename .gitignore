@@ -5,19 +5,8 @@
 # tasks.txt
 # users.txt
 
-# Personal/Private folder
-personal/
-private/
-notes/
-*.local.txt
-
 # System files
 .DS_Store
 Thumbs.db
 
-# Project Guides (Private)
-COMPLETE_GUIDE.md
-FILE_LOGIC_GUIDE.md
-README.md
-tasks.txt
-users.txt
+# Project
