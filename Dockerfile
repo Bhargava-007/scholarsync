@@ -4,6 +4,6 @@ WORKDIR /app
 
 COPY . .
 
-RUN javac dsa/*.java
+RUN find . -name "*.java" > sources.txt && javac @sources.txt
 
 CMD ["java", "dsa.Main"]
