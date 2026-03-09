@@ -4,6 +4,6 @@ WORKDIR /app
 
 COPY . .
 
-RUN find . -name "*.java" > sources.txt && javac @sources.txt
+RUN find dsa -name "*.java" > sources.txt && javac -d . @sources.txt
 
-CMD ["java", "dsa.Main"]
+CMD ["java", "Main"]
