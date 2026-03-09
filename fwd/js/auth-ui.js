@@ -1,4 +1,4 @@
-export function updateNav() {
+function updateNav() {
     const nav = document.getElementById("mainNav");
     if (!nav) return;
 
@@ -22,13 +22,20 @@ export function updateNav() {
         html += `<a class="nav-link ${window.location.pathname.includes('register') ? 'active' : ''}" href="${prefix}register.html">Register</a>`;
     }
 
+    html += `<button id="themeToggleBtn" class="btn-link ghost" style="margin-left:8px; padding:4px 12px; font-size:0.85rem; border:1px solid var(--text); border-radius:20px;">Toggle Theme</button>`;
+
     nav.innerHTML = html;
+
+    applyTheme();
 
     document.getElementById("logoutBtn")?.addEventListener("click", () => {
         localStorage.removeItem("user");
         window.location.href = homePrefix + "index.html";
     });
-}
 
+    document.getElementById("themeToggleBtn")?.addEventListener("click", () => {
+        toggleTheme();
+    });
+}
 
 updateNav();

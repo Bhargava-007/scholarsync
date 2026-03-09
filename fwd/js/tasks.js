@@ -1,6 +1,3 @@
-import { api } from "./api.js";
-import { setStatus, taskCard } from "./utils.js";
-
 async function refresh() {
     try {
         const tasksData = await api.getTasks();

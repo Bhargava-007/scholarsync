@@ -1,6 +1,3 @@
-import { api } from "./api.js";
-import { setStatus } from "./utils.js";
-
 document.getElementById("taskForm")?.addEventListener("submit", async (e) => {
     e.preventDefault();
     const task = {

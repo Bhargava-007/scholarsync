@@ -1,5 +1,4 @@
 package utils;
-
 import models.Task;
 import com.sun.net.httpserver.HttpExchange;
 import java.io.IOException;
@@ -7,7 +6,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
-
 public class HandlerUtils {
     public static boolean handleOptions(HttpExchange ex) throws IOException {
         addCors(ex);
@@ -18,12 +16,10 @@ public class HandlerUtils {
         }
         return false;
     }
-
     public static String readBody(HttpExchange ex) throws IOException {
         InputStream in = ex.getRequestBody();
         return new String(in.readAllBytes(), StandardCharsets.UTF_8);
     }
-
     public static void sendJson(HttpExchange ex, int status, String body) throws IOException {
         byte[] bytes = body.getBytes(StandardCharsets.UTF_8);
         addCors(ex);
@@ -33,13 +29,11 @@ public class HandlerUtils {
         out.write(bytes);
         out.close();
     }
-
     public static void addCors(HttpExchange ex) {
         ex.getResponseHeaders().set("Access-Control-Allow-Origin", "*");
         ex.getResponseHeaders().set("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
         ex.getResponseHeaders().set("Access-Control-Allow-Headers", "Content-Type");
     }
-
     public static String queryParam(String query, String key) {
         if (query == null)
             return null;
@@ -52,7 +46,6 @@ public class HandlerUtils {
         }
         return null;
     }
-
     public static String jsonValue(String body, String key) {
         String marker = "\"" + key + "\"";
         int m = body.indexOf(marker);
@@ -66,7 +59,6 @@ public class HandlerUtils {
             i++;
         if (i >= body.length())
             return null;
-
         if (body.charAt(i) == '"') {
             int j = i + 1;
             StringBuilder s = new StringBuilder();
@@ -79,13 +71,11 @@ public class HandlerUtils {
             }
             return s.toString();
         }
-
         int j = i;
         while (j < body.length() && body.charAt(j) != ',' && body.charAt(j) != '}')
             j++;
         return body.substring(i, j).trim();
     }
-
     public static String tasksJson(java.util.List<Task> tasks) {
         StringBuilder out = new StringBuilder("[");
         for (int i = 0; i < tasks.size(); i++) {
@@ -96,7 +86,6 @@ public class HandlerUtils {
         out.append("]");
         return out.toString();
     }
-
     public static String taskJson(Task t) {
         return "{"
                 + "\"id\":\"" + esc(t.id) + "\","
@@ -107,13 +96,11 @@ public class HandlerUtils {
                 + "\"status\":\"" + esc(t.status) + "\""
                 + "}";
     }
-
     public static String esc(String value) {
         if (value == null)
             return "";
         return value.replace("\\", "\\\\").replace("\"", "\\\"");
     }
-
     public static boolean blank(String value) {
         return value == null || value.trim().isEmpty();
     }

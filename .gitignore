@@ -1,12 +1,2 @@
-# Compiled Java classes
-*.class
-
-# Text database files (Optional: remove if you want to track task data)
-# tasks.txt
-# users.txt
-
-# System files
-.DS_Store
-Thumbs.db
-
-# Project
+# Ignore all .md files
+*.md

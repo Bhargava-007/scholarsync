@@ -1,13 +1,13 @@
-export function setStatus(elementId, message, isError) {
-    const el = document.getElementById(elementId);
-    if (!el) return;
-    el.textContent = message;
-    el.style.color = isError ? "var(--danger-text)" : "var(--success-text)";
+function setStatus(elementId, message, isError) {
+  const el = document.getElementById(elementId);
+  if (!el) return;
+  el.textContent = message;
+  el.style.color = isError ? "var(--danger-text)" : "var(--success-text)";
 }
 
-export function taskCard(task) {
-    const pClass = task.priority >= 4 ? "priority-high" : task.priority >= 3 ? "priority-medium" : "priority-low";
-    return `
+function taskCard(task) {
+  const pClass = task.priority >= 4 ? "priority-high" : task.priority >= 3 ? "priority-medium" : "priority-low";
+  return `
     <div class="task ${pClass}">
       <h3>${task.title}</h3>
       <p>Subject: ${task.subject}</p>

@@ -1,6 +1,3 @@
-import { api } from "./api.js";
-import { setStatus } from "./utils.js";
-
 document.getElementById("registerForm")?.addEventListener("submit", async (e) => {
     e.preventDefault();
     const username = document.getElementById("username").value.trim();

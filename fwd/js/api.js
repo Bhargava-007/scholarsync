@@ -20,7 +20,7 @@ async function request(path, options = {}) {
     return data || {};
 }
 
-export const api = {
+const api = {
     getTasks: () => request("/api/tasks"),
     addTask: (task) => request("/api/tasks", {
         method: "POST",

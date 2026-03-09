@@ -1,8 +1,3 @@
-import { api } from "./api.js";
-import { setStatus } from "./utils.js";
-
-
-
 document.getElementById("loginForm")?.addEventListener("submit", async (e) => {
     e.preventDefault();
     const username = document.getElementById("username").value.trim();
@@ -12,7 +7,6 @@ document.getElementById("loginForm")?.addEventListener("submit", async (e) => {
         const res = await api.login({ username, password });
         if (res.success) {
             localStorage.setItem("user", username);
-
             window.location.href = "../index.html";
         }
     } catch (err) {

@@ -1,13 +1,16 @@
 package store;
 
 import models.Task;
+import co1algorithms.SearchAlgorithms;
+import co1algorithms.SortingAlgorithms;
+import co2adt.TaskLinkedList;
+import co3stacksqueues.TaskPriorityHeap;
 import java.io.*;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class TaskStore {
-    private List<Task> tasks = new ArrayList<>();
+    private TaskLinkedList tasks = new TaskLinkedList();
     private static final String FILE_PATH = "tasks.txt";
 
     public TaskStore() {
@@ -15,60 +18,58 @@ public class TaskStore {
     }
 
     public List<Task> all() {
-        return tasks;
+        return Arrays.asList(tasks.toArray());
     }
 
     public Task find(String id) {
-        return tasks.stream()
-                .filter(t -> t.id.equals(id))
-                .findFirst()
-                .orElse(null);
+        return SearchAlgorithms.linearSearchById(tasks.toArray(), id);
     }
 
     public boolean add(Task task) {
-        if (find(task.id) != null) {
+        if (tasks.find(task.id) != null) {
             return false;
         }
-        tasks.add(task);
+        tasks.addBack(task);
         saveToFile();
         return true;
     }
 
     public boolean delete(String id) {
-        Task t = find(id);
-        if (t == null) {
+        if (!tasks.delete(id)) {
             return false;
         }
-        tasks.remove(t);
         saveToFile();
         return true;
     }
 
     public boolean move(String id, String to) {
-        Task t = find(id);
-        if (t == null) {
+        if (!tasks.updateStatus(id, to)) {
             return false;
         }
-        t.status = to;
         saveToFile();
         return true;
     }
 
     public List<Task> top(int k) {
-        return tasks.stream()
-                .sorted((t1, t2) -> {
-                    if (t1.priority != t2.priority) {
-                        return Integer.compare(t2.priority, t1.priority);
-                    }
-                    return t1.deadline.compareTo(t2.deadline);
-                })
-                .limit(k)
-                .collect(Collectors.toList());
+        if (tasks.isEmpty())
+            return Arrays.asList();
+        Task[] allTasks = tasks.toArray();
+        TaskPriorityHeap heap = new TaskPriorityHeap(allTasks.length);
+        for (Task t : allTasks) {
+            heap.insert(t);
+        }
+        return Arrays.asList(heap.topK(Math.max(1, k)));
+    }
+
+    public List<Task> sortedByPriority() {
+        Task[] allTasks = tasks.toArray();
+        SortingAlgorithms.mergeSort(allTasks, 0, allTasks.length - 1);
+        return Arrays.asList(allTasks);
     }
 
     private void saveToFile() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
-            for (Task t : tasks) {
+            for (Task t : tasks.toArray()) {
                 writer.write(
                         t.id + "|" + t.title + "|" + t.subject + "|" + t.priority + "|" + t.deadline + "|" + t.status);
                 writer.newLine();
@@ -82,13 +83,12 @@ public class TaskStore {
         File file = new File(FILE_PATH);
         if (!file.exists())
             return;
-
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] p = line.split("\\|");
                 if (p.length == 6) {
-                    tasks.add(new Task(p[0], p[1], p[2], Integer.parseInt(p[3]), p[4], p[5]));
+                    tasks.addBack(new Task(p[0], p[1], p[2], Integer.parseInt(p[3]), p[4], p[5]));
                 }
             }
         } catch (IOException | NumberFormatException e) {
