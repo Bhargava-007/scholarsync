@@ -1,6 +1,5 @@
 import com.sun.net.httpserver.HttpServer;
 import java.net.InetSocketAddress;
-import java.nio.file.Paths;
 import handlers.*;
 import store.TaskStore;
 
@@ -18,10 +17,7 @@ public class Main {
 
         String fwdRoot = "fwd";
         StaticHandler staticHandler = new StaticHandler(fwdRoot);
-        server.createContext("/fwd", staticHandler);
-        server.createContext("/", staticHandler);
-        
-        StaticHandler staticHandler = new StaticHandler(fwdRoot);
+
         server.createContext("/fwd", staticHandler);
         server.createContext("/", staticHandler);
 
