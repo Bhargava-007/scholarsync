@@ -16,10 +16,11 @@ public class Main {
         server.createContext("/api/login", auth);
         server.createContext("/api/register", auth);
 
-        String fwdRoot = Paths.get(Main.class.getProtectionDomain().getCodeSource().getLocation().toURI())
-                .getParent()
-                .resolve("fwd")
-                .toString();
+        String fwdRoot = "fwd";
+        StaticHandler staticHandler = new StaticHandler(fwdRoot);
+        server.createContext("/fwd", staticHandler);
+        server.createContext("/", staticHandler);
+        
         StaticHandler staticHandler = new StaticHandler(fwdRoot);
         server.createContext("/fwd", staticHandler);
         server.createContext("/", staticHandler);
